@@ -14,12 +14,11 @@
     --bg-color: #1f242d;
     --second-bg-color: #323946;
     --text-color: #fff;
-    /*--main-color: #0ef;*/
-    --main-color: #37b13b;
+    --main-color: #37b13b; /* Cor principal mantida */
 }
 
 html {
-    font-size: 62.5%;
+    font-size: 62.5%; /* Permite fácil conversão para rem: 1rem = 10px */
     overflow-x: hidden;
 }
 
@@ -29,8 +28,8 @@ body {
 }
 
 section {
-    height: 100vh;
-    padding: 10rem 15% 2rem;
+    min-height: 100vh; /* Usar min-height para permitir que a seção cresça se o conteúdo for maior */
+    padding: 10rem 9% 2rem; /* Padding padrão para seções */
 }
 
 .header {
@@ -38,16 +37,18 @@ section {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 2rem 15%;
+    padding: 2rem 9%; /* Padding padrão para o header */
     background: var(--bg-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+    transition: padding 0.3s ease, background-color 0.3s ease; /* Transição suave para sticky header */
 }
 
 .header.sticky {
     border-bottom: .1rem solid rgba(0,0,0,.2);
+    background: var(--second-bg-color); /* Fundo ligeiramente diferente para sticky */
 }
 
 .logo {
@@ -64,32 +65,40 @@ section {
     transition: .3s;
 }
 
-.navbar a:hover, .navbar a.active {
+.navbar a:hover,
+.navbar a.active {
     color: var(--main-color);
 }
 
 #menu-icon {
     font-size: 3.6rem;
     color: var(--text-color);
-    display: none;
+    display: none; /* Inicialmente escondido em telas maiores */
+    cursor: pointer;
 }
 
+/* Seção Home */
 .home {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 2rem; /* Espaçamento entre conteúdo e imagem */
 }
 
 .home-img img {
-    width: 35vw;
+    width: 30vw; /* Ajustado para melhor proporção inicial */
+    max-width: 400px; /* Limite máximo para não ficar excessivamente grande */
+    min-width: 250px; /* Limite mínimo para telas menores */
     animation: floatImage 4s ease-in-out infinite;
+    border-radius: 50%; /* Adiciona um toque de design */
+    border: 5px solid var(--main-color);
+    box-shadow: 0 0 20px var(--main-color);
 }
 
 @keyframes floatImage {
     0% {
         transform: translateY(0);
     }
-
     50% {
         transform: translateY(-2.4rem);
     }
@@ -98,17 +107,17 @@ section {
     }
 }
 
-.home-content h3{
+.home-content {
+    max-width: 600px; /* Limita a largura do conteúdo de texto */
+}
+
+.home-content h3 {
     font-size: 3.2rem;
     font-weight: 700;
 }
 
-.home-content h3:nth-of-type(2){
+.home-content h3:nth-of-type(2) {
     margin-bottom: 2rem;
-}
-
-span {
-    color: var(--main-color);
 }
 
 .home-content h1 {
@@ -119,6 +128,7 @@ span {
 
 .home-content p {
     font-size: 1.6rem;
+    margin: 1.5rem 0 3rem; /* Ajuste de margem */
 }
 
 .social-media a {
@@ -132,57 +142,71 @@ span {
     border-radius: 50%;
     font-size: 2rem;
     color: var(--main-color);
-    margin: 3rem 1.5rem 3rem 0;
+    margin: 0 1.5rem 3rem 0; /* Margem ajustada */
     transition: .5s ease;
 }
 
 .social-media a:hover {
-    background: var(--main-color);
-    color: var(--text-color);
+    background: var(--text-color);
+    color: var(--main-color); /* Contraste melhorado */
     box-shadow: 0 0 1rem var(--main-color);
 }
 
 .btn {
     display: inline-block;
-    padding: 1rem 2.8rem;
+    padding: 1.2rem 2.8rem; /* Padding ligeiramente aumentado */
     background: var(--main-color);
     border-radius: 4rem;
-    box-shadow: none;
+    box-shadow: 0 0 .5rem var(--main-color); /* Sombra sutil inicial */
     font-size: 1.6rem;
-    color: var(--text-color);
+    color: var(--second-bg-color); /* Cor de texto para melhor contraste com o botão */
     letter-spacing: .1rem;
     font-weight: 600;
-    transition: .2s;
+    transition: .3s ease; /* Transição mais suave */
+    border: none; /* Remover borda padrão do botão */
 }
 
 .btn:hover {
-    box-shadow: 0 0 1rem var(--main-color);
+    background: var(--text-color);
+    color: var(--main-color);
+    box-shadow: 0 0 1.5rem var(--main-color); /* Sombra mais pronunciada no hover */
 }
 
+/* Seção About */
 .about {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 4rem; /* Aumentado o gap */
     background: var(--second-bg-color);
 }
 
 .about-img img {
-    width: 35vw;
+    width: 30vw; /* Ajustado para melhor proporção inicial */
+    max-width: 400px; /* Limite máximo */
+    min-width: 250px; /* Limite mínimo */
+    border-radius: 1rem; /* Bordas arredondadas */
 }
 
 .heading {
     text-align: center;
     font-size: 4.5rem;
+    margin-bottom: 3rem; /* Adiciona margem inferior ao heading geral */
 }
 
-.about-content h2{
+.about-content {
+    max-width: 600px;
+}
+
+.about-content h2 {
     text-align: left;
     line-height: 1.2;
+    font-size: 3.5rem; /* Ajuste de tamanho */
 }
 
 .about-content h3 {
     font-size: 2.6rem;
+    margin-top: 1rem; /* Espaçamento */
 }
 
 .about-content p {
@@ -190,31 +214,36 @@ span {
     margin: 2rem 0 3rem;
 }
 
-.services h2 {
+/* Seção Services */
+.services h2.heading { /* Especificidade para o h2 da seção services */
     margin-bottom: 5rem;
 }
 
 .services-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch; /* Alinha os itens para terem a mesma altura */
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 2.5rem; /* Gap ajustado */
 }
 
-.services-container .services-box{
-    flex: 1 1 30rem;
+.services-container .services-box {
+    flex: 1 1 30rem; /* Base flex para responsividade */
     background: var(--second-bg-color);
     padding: 3rem 2rem 4rem;
     border-radius: 2rem;
     text-align: center;
     border: .2rem solid var(--bg-color);
     transition: .5s ease;
+    display: flex; /* Para alinhar conteúdo interno */
+    flex-direction: column; /* Conteúdo em coluna */
+    justify-content: space-between; /* Distribui espaço, útil se os textos variarem */
 }
 
 .services-container .services-box:hover {
     border-color: var(--main-color);
-    transform: scale(1.02);
+    transform: scale(1.03) translateY(-5px); /* Efeito de hover sutil */
+    box-shadow: 0 0 1.5rem rgba(0, 239, 0, 0.2);
 }
 
 .services-box i {
@@ -224,39 +253,42 @@ span {
 
 .services-box h3 {
     font-size: 2.6rem;
+    margin-top: 1rem; /* Espaçamento */
 }
 
 .services-box p {
     font-size: 1.6rem;
     margin: 1rem 0 3rem;
-    text-align: left;
+    text-align: left; /* Mantido, mas considere centralizar se o design permitir */
+    flex-grow: 1; /* Permite que o parágrafo ocupe espaço disponível */
 }
 
+/* Seção Portfolio */
 .portfolio {
     background: var(--second-bg-color);
 }
 
-.portfolio h2 {
+.portfolio h2.heading { /* Especificidade */
     margin-bottom: 5rem;
 }
 
 .portfolio-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Grid responsivo */
+    gap: 2.5rem; /* Gap ajustado */
 }
 
 .portfolio-container .portfolio-box {
     position: relative;
     border-radius: 2rem;
-    box-shadow: 0 0 1rem var(--bg-color);
+    box-shadow: 0 0 1rem rgba(0,0,0, 0.3); /* Sombra mais sutil */
     overflow: hidden;
-    display: flex;
+    display: flex; /* Para a imagem preencher */
 }
 
 .portfolio-box img {
     width: 100%;
+    height: auto; /* Mantém a proporção da imagem */
     transition: .5s ease;
 }
 
@@ -264,20 +296,19 @@ span {
     transform: scale(1.1);
 }
 
-    
 .portfolio-box .portfolio-layer {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0,0,0,.1), var(--main-color));
+    background: linear-gradient(rgba(0,0,0,.2), var(--main-color)); /* Gradiente sutil */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
-    padding: 0 4rem;
+    padding: 2rem; /* Padding ajustado */
     transform: translateY(100%);
     transition: .5s ease;
 }
@@ -287,20 +318,22 @@ span {
 }
 
 .portfolio-layer h4 {
-    font-size: 3rem;
+    font-size: 2.4rem; /* Tamanho ajustado */
+    color: var(--text-color);
 }
 
 .portfolio-layer p {
-    font-size: 1.6rem;
-    margin: .3rem 0 1rem;
+    font-size: 1.4rem; /* Tamanho ajustado */
+    margin: .5rem 0 1.5rem; /* Margens ajustadas */
+    color: var(--text-color);
 }
 
 .portfolio-layer a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 5rem;
-    height: 5rem;
+    width: 4.5rem; /* Tamanho ajustado */
+    height: 4.5rem; /* Tamanho ajustado */
     background: var(--text-color);
     border-radius: 50%;
 }
@@ -310,12 +343,13 @@ span {
     color: var(--second-bg-color);
 }
 
-.contact h2 {
-    margin-bottom: 6rem;
+/* Seção Contact */
+.contact h2.heading { /* Especificidade */
+    margin-bottom: 4rem; /* Margem ajustada */
 }
 
 .contact form {
-    max-width: 80rem;
+    max-width: 70rem; /* Largura máxima do formulário */
     margin: 1rem auto;
     text-align: center;
     margin-bottom: 3rem;
@@ -324,35 +358,44 @@ span {
 .contact form .input-box {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Permite que os inputs quebrem a linha */
 }
 
-.contact form .input-box input, 
+.contact form .input-box input,
 .contact form textarea {
-    width: 100%;
+    width: 100%; /* Ocupa toda a largura por padrão (para mobile first) */
     padding: 1.5rem;
     font-size: 1.6rem;
     color: var(--text-color);
     background: var(--second-bg-color);
     border-radius: .8rem;
     margin: .7rem 0;
-    border: none;
+    border: .1rem solid transparent; /* Borda sutil para foco */
+    transition: border-color 0.3s ease;
 }
 
-.contact form .input-box input {
+.contact form .input-box input:focus,
+.contact form textarea:focus {
+    border-color: var(--main-color);
+}
+
+/* Em telas maiores, os inputs da mesma linha dividem o espaço */
+.contact form .input-box input.half-width {
     width: 49%;
 }
 
+
 .contact form textarea {
-    resize: none;
+    resize: vertical; /* Permite apenas redimensionamento vertical */
+    min-height: 150px; /* Altura mínima */
 }
 
 .contact form .btn {
     margin-top: 2rem;
     cursor: pointer;
-    border: none;
 }
 
+/* Footer */
 .footer {
     display: flex;
     justify-content: space-between;
@@ -364,6 +407,7 @@ span {
 
 .footer-text p {
     font-size: 1.6rem;
+    text-align: center; /* Centraliza em telas menores */
 }
 
 .footer-iconTop a {
@@ -378,125 +422,192 @@ span {
 
 .footer-iconTop a:hover {
     box-shadow: 0 0 1rem var(--main-color);
+    background: var(--text-color);
+}
+.footer-iconTop a:hover i {
+    color: var(--main-color);
 }
 
 .footer-iconTop a i {
     font-size: 2.4rem;
-    color: var(--text-color);
+    color: var(--second-bg-color); /* Melhor contraste */
 }
 
-/* BREAKPOINT */
+/* BREAKPOINTS RESPONSIVOS */
 
-/* @media (max-width: 1200px) {
-    html {
-        font-size: 50%;
-    }
-}
-
+/* Telas médias (tablets, laptops pequenos) */
 @media (max-width: 991px) {
-    .header {
-        padding: 2rem 3%;
+    html {
+        font-size: 55%; /* Ajuste global de fonte */
     }
-
     section {
-        padding: 10rem 3% 2rem;
+        padding: 10rem 5% 2rem; /* Padding lateral reduzido */
     }
-
-    .services {
-        padding-bottom: 7rem;
+    .header {
+        padding: 2rem 5%; /* Padding lateral reduzido */
     }
-
-    .portfolio {
-        padding-bottom: 7rem;
+    .home {
+        gap: 1rem; /* Reduz o gap na home */
     }
-
-    .contact {
-        min-height: auto;
+    .home-img img {
+        width: 35vw;
     }
-
+    .about {
+        gap: 2rem; /* Reduz o gap no about */
+    }
+    .about-img img {
+        width: 35vw;
+    }
     .footer {
-        padding: 2rem 3%;
+        padding: 2rem 5%;
     }
 }
 
+/* Telas pequenas (tablets em modo retrato, celulares grandes) */
 @media (max-width: 768px) {
     #menu-icon {
-        display: block;
+        display: block; /* Mostra o ícone do menu */
     }
 
     .navbar {
         position: absolute;
-        top: 100%;
+        top: 100%; /* Abaixo do header */
         left: 0;
         width: 100%;
-        padding: 1rem 3%;
+        padding: 1rem 5%; /* Padding ajustado */
         background: var(--bg-color);
         border-top: .1rem solid rgba(0,0,0,.2);
         box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
-        display: none;
+        display: none; /* Escondido por padrão */
+        flex-direction: column; /* Itens em coluna */
     }
 
     .navbar.active {
-        display: block;
+        display: flex; /* Mostra quando ativo (JS controlará isso) */
     }
 
     .navbar a {
         display: block;
         font-size: 2rem;
-        margin: 3rem 0;
+        margin: 2rem 0; /* Margem vertical entre links */
+        text-align: center;
     }
 
     .home {
-        flex-direction: column;
+        flex-direction: column; /* Conteúdo e imagem em coluna */
+        text-align: center; /* Centraliza texto */
     }
 
     .home-content h3 {
-        font-size: 2.6rem;
+        font-size: 2.8rem;
     }
 
     .home-content h1 {
-        font-size: 5rem;
+        font-size: 4.5rem; /* Tamanho de título reduzido */
     }
 
     .home-img img {
-        width: 50vw;
+        width: 60vw; /* Imagem ocupa mais largura */
+        margin-top: 4rem;
+        order: -1; /* Imagem aparece antes do texto na ordem visual */
+    }
+    
+    .social-media {
+        text-align: center; /* Centraliza ícones sociais */
+    }
+    .social-media a {
+         margin: 2rem 0.75rem; /* Ajusta margem dos icones sociais */
+    }
+
+
+    .about {
+        flex-direction: column-reverse; /* Imagem abaixo do texto */
+        text-align: center;
+    }
+    .about-content h2 {
+        text-align: center; /* Centraliza heading */
+    }
+
+    .about-img img {
+        width: 60vw;
         margin-top: 4rem;
     }
 
-    .about {
-        flex-direction: column-reverse;
-    }
-
-    .about img {
-       width: 50vw;
-       margin-top: 4rem;
-    }
-
-    .services h2 {
+    .services h2.heading {
         margin-bottom: 3rem;
     }
-
-    .portfolio h2 {
-        margin-bottom: 3rem;
+    .services-container .services-box {
+        flex-basis: 100%; /* Cada caixa de serviço ocupa a largura total */
     }
 
-    .portfolio-container {
-        grid-template-columns: repeat(2, 1fr);
+    .portfolio h2.heading {
+        margin-bottom: 3rem;
+    }
+    /* .portfolio-container já é responsivo com auto-fit, mas podemos forçar 1 coluna se necessário */
+
+    .contact form .input-box input.half-width {
+        width: 100%; /* Inputs do formulário ocupam 100% */
+    }
+    .footer-text p {
+        width: 100%; /* Garante que o texto do footer ocupe toda a largura antes de quebrar */
+        margin-bottom: 1.5rem;
+    }
+    .footer-iconTop {
+        width: 100%;
+        text-align: center; /* Centraliza o ícone de "topo" */
     }
 }
 
-@media (max-width: 617px) {
+/* Telas muito pequenas (celulares) */
+@media (max-width: 480px) {
+    html {
+        font-size: 50%; /* Reduz ainda mais a fonte base */
+    }
+    section {
+        padding: 8rem 3% 2rem;
+    }
+    .header {
+        padding: 1.5rem 3%;
+    }
+    .home-content h1 {
+        font-size: 4rem;
+    }
+    .home-content h3 {
+        font-size: 2.4rem;
+    }
+    .home-img img {
+        width: 70vw;
+    }
+    .about-img img {
+        width: 70vw;
+    }
+
     .portfolio-container {
+         /* Força uma coluna em telas muito pequenas se o auto-fit não for suficiente */
         grid-template-columns: 1fr;
     }
+    .portfolio-layer h4 {
+        font-size: 2rem;
+    }
+    .portfolio-layer p {
+        font-size: 1.3rem;
+    }
+    .contact form {
+        padding: 0 1rem; /* Adiciona um pequeno padding lateral ao form */
+    }
 }
 
-@media (max-width: 617px) {
-    html {
-        font-size: 50%;
+@media (max-width: 360px) {
+    .home-img img {
+        width: 80vw; /* Imagem ainda maior para telas bem pequenas */
     }
-
-    .contact form .input-box input {
-        width: 100%;
+    .about-img img {
+        width: 80vw;
     }
-} */
+     .social-media a {
+         width: 3.5rem;
+         height: 3.5rem;
+         font-size: 1.8rem;
+         margin: 1.5rem 0.5rem;
+    }
+}

@@ -32,6 +32,22 @@
 //     navbar.classList.remove('active');
 // };
 
+
+// Exemplo de código JS (coloque no seu main.js)
+let menuIcon = document.querySelector('#menu-icon');
+let navbar = document.querySelector('.navbar');
+
+menuIcon.onclick = () => {
+    menuIcon.classList.toggle('bx-x'); // Opcional: para mudar o ícone do menu
+    navbar.classList.toggle('active');
+};
+
+// Opcional: Fechar o menu ao clicar em um link ou fora dele
+window.onscroll = () => {
+    menuIcon.classList.remove('bx-x');
+    navbar.classList.remove('active');
+};
+
 /* ScrollReveal */
 ScrollReveal({ 
     reset: false,
